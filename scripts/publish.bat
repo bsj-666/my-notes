@@ -1,35 +1,44 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal
 
-set MSG=%~1
+chcp 65001 >nul
 
-if "%MSG%"=="" (
-  set MSG=docs: update notes
-)
+rem 切到脚本所在目录的上一级，也就是项目根目录
+cd /d "%~dp0.."
+
+set "MSG=%~1"
+if "%MSG%"=="" set "MSG=docs: update notes"
 
 echo 生成侧边栏...
-node scripts\generate-sidebar.mjs
+node "%CD%\scripts\generate-sidebar.mjs"
+if errorlevel 1 exit /b 1
 
 echo 本地构建检查...
 call npm run docs:build
 if errorlevel 1 exit /b 1
 
-git status --porcelain > temp_git_status.txt
-set /p CHANGES=<temp_git_status.txt
-del temp_git_status.txt
+rem 检查是否有变更
+git diff --quiet
+if not errorlevel 1 goto has_changes
 
-if "%CHANGES%"=="" (
-  echo 没有检测到文件变更，无需提交。
-  exit /b 0
-)
+git diff --cached --quiet
+if not errorlevel 1 goto has_changes
 
+echo 没有检测到文件变更，无需提交。
+exit /b 0
+
+:has_changes
 echo 添加文件...
 git add .
+if errorlevel 1 exit /b 1
 
 echo 提交变更...
 git commit -m "%MSG%"
+if errorlevel 1 exit /b 1
 
 echo 推送到 GitHub...
 git push origin main
+if errorlevel 1 exit /b 1
 
 echo 完成。GitHub Actions 会自动部署网站。
+exit /b 0

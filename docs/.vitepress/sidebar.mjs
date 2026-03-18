@@ -2,7 +2,10 @@ export const sidebar = [
   {
     text: '笔记',
     items: [
-      { text: '第一篇笔记', link: '/notes/first-note' }
-    ]
+    {
+        "text": "✅ 方法一：使用 systemd（推荐 ⭐）",
+        "link": "/notes/运维"
+    }
+]
   }
 ]
