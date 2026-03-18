@@ -4,10 +4,11 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "sidebar:gen": "node scripts/generate-sidebar.mjs",
+    "publish": "node scripts/generate-sidebar.mjs && npm run docs:build"
   },
   "devDependencies": {
     "vitepress": "^1.6.4"
   }
 }
-

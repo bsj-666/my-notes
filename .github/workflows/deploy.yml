@@ -35,6 +35,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate sidebar
+        run: node scripts/generate-sidebar.mjs
+
       - name: Build with VitePress
         run: npm run docs:build
 
