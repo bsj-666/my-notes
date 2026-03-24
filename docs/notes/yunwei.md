@@ -34,7 +34,7 @@ WantedBy=multi-user.target
 ### 3️⃣ 重新加载配置
 
 ```bash
-sudo systemctl daemon-reexec
+sudo systemctl daemon-reexec   myfast
 sudo systemctl daemon-reload
 ```
 
