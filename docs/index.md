@@ -15,14 +15,3 @@ import { data as recentPosts } from './recent.data.mjs'
   </li>
 </ul>
 
-
-
-
-
-# 我的笔记站
-
-欢迎来到我的个人笔记网站。
-
-## 最近更新
-- [运维](/notes/yunwei)
-
