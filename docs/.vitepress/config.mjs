@@ -11,6 +11,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' }
     ],
+	aside: true,
 	outline: {
       level: [2]
     },
