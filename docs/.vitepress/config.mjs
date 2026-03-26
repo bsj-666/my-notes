@@ -11,9 +11,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' }
     ],
-	outline: {
-      level: [2]   // 👈 只显示 h2
-    },
+	outline: false,
     sidebar,
     socialLinks: [
       { icon: 'github', link: 'https://bsj-666.github.io/my-notes' }
