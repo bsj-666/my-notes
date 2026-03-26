@@ -1,1 +1,0 @@
-import{_ as a,o as t,c as r,ae as n}from"./chunks/framework.DVIRhwhq.js";const m=JSON.parse('{"title":"我的笔记站","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),o={name:"index.md"};function i(s,e,l,d,_,c){return t(),r("div",null,[...e[0]||(e[0]=[n("",4)])])}const p=a(o,[["render",i]]);export{m as __pageData,p as default};
