@@ -47,3 +47,8 @@
 .custom-outline-toggle a:hover {
   color: var(--vp-c-brand-1);
 }
+
+/* 隐藏默认右侧 outline */
+.VPDocAsideOutline {
+  display: none !important;
+}
