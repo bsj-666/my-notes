@@ -1,6 +1,4 @@
-
-
-## 能耗统计
+# 能耗统计
 
 **1. 定时采集与落库（用电统计主链）**
 入口是 EnergyStatisticsTask.java (line 68)，每小时整点跑一次。流程是：先按设备类型拆两批设备（配电 54，IT 50/53）EnergyStatisticsTask.java (line 73)，月初零点先归档上月数据 EnergyStatisticsTask.java (line 80)，再并发调用服务采集 EnergyStatisticsTask.java (line 86)。

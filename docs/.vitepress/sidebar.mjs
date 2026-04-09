@@ -3,7 +3,7 @@ export const sidebar = [
     text: '笔记',
     items: [
     {
-        "text": "ahjf",
+        "text": "能耗统计",
         "link": "/notes/ahjf"
     },
     {
