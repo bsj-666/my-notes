@@ -3,6 +3,10 @@ export const sidebar = [
     text: '笔记',
     items: [
     {
+        "text": "ahjf",
+        "link": "/notes/ahjf"
+    },
+    {
         "text": "文章标题",
         "link": "/notes/tips"
     },
