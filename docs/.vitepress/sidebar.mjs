@@ -3,7 +3,7 @@ export const sidebar = [
     text: '笔记',
     items: [
     {
-        "text": "能耗统计",
+        "text": "安徽机房功能梳理",
         "link": "/notes/ahjf"
     },
     {
