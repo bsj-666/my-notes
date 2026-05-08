@@ -1,0 +1,15 @@
+:root {
+  --vp-layout-max-width: 100%;
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: 900px !important;
+}
+
+.VPDoc.has-aside .content {
+  max-width: 900px !important;
+}
+
+.VPDocAside {
+  display: block !important;
+}
