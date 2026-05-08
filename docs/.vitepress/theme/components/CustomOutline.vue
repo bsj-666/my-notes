@@ -48,6 +48,7 @@ function isOpen(link) {
   return expanded.value.has(link)
 }
 
+
 function initExpanded() {
   expanded.value = new Set()
 }
