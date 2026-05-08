@@ -12,6 +12,8 @@ export default defineConfig({
       { text: '首页', link: '/' }
     ],
 	
+	sidebar,
+	
 	aside: 'right',
 	outline: {
     label: '目录',
