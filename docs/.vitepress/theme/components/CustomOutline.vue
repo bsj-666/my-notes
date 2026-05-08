@@ -49,11 +49,7 @@ function isOpen(link) {
 }
 
 function initExpanded() {
-  const next = new Set()
-  for (const item of items.value) {
-    next.add(item.link)
-  }
-  expanded.value = next
+  expanded.value = new Set()
 }
 
 watch(() => route.path, initExpanded)
