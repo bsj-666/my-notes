@@ -49,8 +49,6 @@ wsl --import Ubuntu-22.04 D:\WSL\Ubuntu-22.04 D:\WSL\Ubuntu-22.04\Ubuntu-22.04.t
 wsl
 ```
 
-
-
 ## wsl访问外网
 
 确认vpn配置  代理的端口号（根据实际情况决定）等
@@ -62,8 +60,6 @@ wsl
 ```bash
 nano ~/.bashrc
 ```
-
-
 
 ### 添加代理刷新函数
 
