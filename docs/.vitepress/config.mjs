@@ -11,15 +11,12 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' }
     ],
-
-    sidebar,
-
-    aside: 'right',
-
-    outline: {
-      label: '目录',
-      level: [2, 3]
-    },
+	
+	aside: 'right',
+	outline: {
+    label: '目录',
+    level: [2, 3]
+	},
 
     socialLinks: [
       { icon: 'github', link: 'https://bsj-666.github.io/my-notes' }
