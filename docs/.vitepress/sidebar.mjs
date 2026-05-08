@@ -11,10 +11,6 @@ export const sidebar = [
         "link": "/notes/docker"
     },
     {
-        "text": "文章标题",
-        "link": "/notes/tips"
-    },
-    {
         "text": "Vue",
         "link": "/notes/vue"
     },

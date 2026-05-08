@@ -55,7 +55,7 @@ wsl
 
 确认vpn配置  代理的端口号（根据实际情况决定）等
 
-![](/images/image-20260507172325844.png)
+![](./images/image-20260507172325844.png)
 
 ### 打开 ~/.bashrc 文件在 WSL 的 Ubuntu 终端中执行：
 
