@@ -19,10 +19,10 @@ if errorlevel 1 exit /b 1
 
 rem 检查是否有变更
 git diff --quiet
-if not errorlevel 1 goto has_changes
+if errorlevel 1 goto has_changes
 
 git diff --cached --quiet
-if not errorlevel 1 goto has_changes
+if errorlevel 1 goto has_changes
 
 echo 没有检测到文件变更，无需提交。
 exit /b 0

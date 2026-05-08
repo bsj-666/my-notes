@@ -1,6 +1,8 @@
-# 安徽机房功能梳理
+# 安徽机房
 
-## 能耗统计
+## 安徽机房功能梳理
+
+### 能耗统计
 
 **1. 定时采集与落库（用电统计主链）**
 入口是 EnergyStatisticsTask.java (line 68)，每小时整点跑一次。流程是：先按设备类型拆两批设备（配电 54，IT 50/53）EnergyStatisticsTask.java (line 73)，月初零点先归档上月数据 EnergyStatisticsTask.java (line 80)，再并发调用服务采集 EnergyStatisticsTask.java (line 86)。
@@ -35,3 +37,21 @@ PUE 查询入口在 ElectricityServiceImpl.java (line 125)。
 
 - 当前值（瞬时）看 last_total_energy_kwh；
 - 趋势看日/周/月字符串序列。
+
+
+
+
+
+## 安徽机房项目踩坑
+
+### @JsonFormat注解在BeanUtils.copyProperties()方法中会失效
+
+##### 核心原理：
+
+让我们来解析一下两个工具的工作机制：
+
+- **@JsonFormat 的工作方式**：它的功能由 Jackson 库实现。只有当您使用 `ObjectMapper`（如 `objectMapper.writeValueAsString(obj)`）将对象序列化为 JSON 字符串时，Jackson 才会去读取这个注解，并按照您指定的 `pattern`（如 `yyyy-MM-dd HH:mm:ss`）来格式化时间字段。
+- **BeanUtils.copyProperties() 的工作方式**：这个方法通过 Java 反射机制工作。它会找到源对象和目标对象中**同名的属性**，然后调用属性的 `getXxx()` 方法从源对象读取值，再调用 `setXxx()` 方法将值写入目标对象。这个过程完全是内存中的字段值拷贝，**既不涉及 JSON 转换，也不会检查和解析任何 Jackson 相关的注解**。
+
+
+

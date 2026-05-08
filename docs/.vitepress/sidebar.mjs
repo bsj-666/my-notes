@@ -3,8 +3,12 @@ export const sidebar = [
     text: '笔记',
     items: [
     {
-        "text": "安徽机房功能梳理",
+        "text": "安徽机房",
         "link": "/notes/ahjf"
+    },
+    {
+        "text": "Docker",
+        "link": "/notes/docker"
     },
     {
         "text": "文章标题",
@@ -13,6 +17,10 @@ export const sidebar = [
     {
         "text": "Vue",
         "link": "/notes/vue"
+    },
+    {
+        "text": "WSL",
+        "link": "/notes/wsl"
     },
     {
         "text": "运维",
