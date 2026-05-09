@@ -38,6 +38,8 @@ PUE 查询入口在 ElectricityServiceImpl.java (line 125)。
 - 当前值（瞬时）看 last_total_energy_kwh；
 - 趋势看日/周/月字符串序列。
 
+
+
 ### 数据采集-告警-短信流程
 
 ```mermaid
