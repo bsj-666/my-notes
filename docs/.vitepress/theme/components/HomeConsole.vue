@@ -4,6 +4,7 @@ import { withBase } from 'vitepress'
 import { data as siteData } from '../../../posts.data.mjs'
 
 const activeTag = ref('全部')
+const copiedUrl = ref('')
 
 const posts = computed(() => siteData?.posts || [])
 const metrics = computed(() => siteData?.metrics || { total: 0, tagCount: 0, latestDate: '待补充' })
@@ -23,6 +24,18 @@ const heroMetrics = computed(() => [
   { label: '主题标签', value: String(metrics.value.tagCount).padStart(2, '0') },
   { label: '最近更新', value: metrics.value.latestDate }
 ])
+
+async function sharePost(url) {
+  const fullUrl = new URL(withBase(url), window.location.origin).toString()
+  await navigator.clipboard.writeText(fullUrl)
+  copiedUrl.value = url
+
+  window.setTimeout(() => {
+    if (copiedUrl.value === url) {
+      copiedUrl.value = ''
+    }
+  }, 1200)
+}
 </script>
 
 <template>
@@ -42,8 +55,8 @@ const heroMetrics = computed(() => [
         </div>
 
         <div class="console-action-row">
-          <a class="console-button" :href="withBase('/archive')">OPEN ARCHIVE</a>
-          <a class="console-button console-button--ghost" :href="withBase('/about')">ABOUT STATION</a>
+          <a class="console-button" :href="withBase('/archive')">文章归档</a>
+          <a class="console-button console-button--ghost" :href="withBase('/about')">关于本站</a>
         </div>
       </div>
 
@@ -81,24 +94,28 @@ const heroMetrics = computed(() => [
 
       <div class="archive-grid">
         <article v-for="post in filteredPosts" :key="post.url" class="archive-card">
-          <a class="archive-card__link" :href="withBase(post.url)">
-            <div class="archive-card__meta">
-              <span class="archive-card__id">{{ post.archiveId }}</span>
-              <span class="archive-card__status">$ OPEN</span>
-            </div>
+          <div class="archive-card__link">
+            <a class="archive-card__main" :href="withBase(post.url)">
+              <div class="archive-card__meta">
+                <span class="archive-card__id">{{ post.archiveId }}</span>
+                <span class="archive-card__status">$ OPEN</span>
+              </div>
 
-            <h3 class="archive-card__title">{{ post.title }}</h3>
-            <p class="archive-card__summary">{{ post.summary }}</p>
+              <h3 class="archive-card__title">{{ post.title }}</h3>
+              <p class="archive-card__summary">{{ post.summary }}</p>
 
-            <div class="archive-card__tags">
-              <span v-for="tag in post.tags" :key="tag" class="archive-card__tag">{{ tag }}</span>
-            </div>
+              <div class="archive-card__tags">
+                <span v-for="tag in post.tags" :key="tag" class="archive-card__tag">{{ tag }}</span>
+              </div>
+            </a>
 
             <div class="archive-card__footer">
               <span>更新于 {{ post.dateText || '待补充日期' }}</span>
-              <span>OPEN LOG ↗</span>
+              <button type="button" class="archive-card__share" @click="sharePost(post.url)">
+                {{ copiedUrl === post.url ? '已复制' : '分享' }}
+              </button>
             </div>
-          </a>
+          </div>
         </article>
       </div>
     </section>

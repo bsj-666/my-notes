@@ -4,6 +4,7 @@ import { withBase } from 'vitepress'
 import { data as siteData } from '../../../posts.data.mjs'
 
 const activeTag = ref('全部')
+const copiedUrl = ref('')
 
 const posts = computed(() => siteData?.posts || [])
 const tags = computed(() => ['全部', ...new Set(posts.value.flatMap((post) => post.tags))])
@@ -22,6 +23,18 @@ const archiveMetrics = computed(() => [
   { label: '主题标签', value: String(metrics.value.tagCount).padStart(2, '0') },
   { label: '最近更新', value: metrics.value.latestDate }
 ])
+
+async function sharePost(url) {
+  const fullUrl = new URL(withBase(url), window.location.origin).toString()
+  await navigator.clipboard.writeText(fullUrl)
+  copiedUrl.value = url
+
+  window.setTimeout(() => {
+    if (copiedUrl.value === url) {
+      copiedUrl.value = ''
+    }
+  }, 1200)
+}
 </script>
 
 <template>
@@ -61,24 +74,28 @@ const archiveMetrics = computed(() => [
 
     <div class="archive-grid archive-grid--full">
       <article v-for="post in filteredPosts" :key="post.url" class="archive-card">
-        <a class="archive-card__link" :href="withBase(post.url)">
-          <div class="archive-card__meta">
-            <span class="archive-card__id">{{ post.archiveId }}</span>
-            <span class="archive-card__status">$ OPEN</span>
-          </div>
+        <div class="archive-card__link">
+          <a class="archive-card__main" :href="withBase(post.url)">
+            <div class="archive-card__meta">
+              <span class="archive-card__id">{{ post.archiveId }}</span>
+              <span class="archive-card__status">$ OPEN</span>
+            </div>
 
-          <h2 class="archive-card__title">{{ post.title }}</h2>
-          <p class="archive-card__summary">{{ post.summary }}</p>
+            <h2 class="archive-card__title">{{ post.title }}</h2>
+            <p class="archive-card__summary">{{ post.summary }}</p>
 
-          <div class="archive-card__tags">
-            <span v-for="tag in post.tags" :key="tag" class="archive-card__tag">{{ tag }}</span>
-          </div>
+            <div class="archive-card__tags">
+              <span v-for="tag in post.tags" :key="tag" class="archive-card__tag">{{ tag }}</span>
+            </div>
+          </a>
 
           <div class="archive-card__footer">
             <span>更新于 {{ post.dateText || '待补充日期' }}</span>
-            <span>OPEN LOG ↗</span>
+            <button type="button" class="archive-card__share" @click="sharePost(post.url)">
+              {{ copiedUrl === post.url ? '已复制' : '分享' }}
+            </button>
           </div>
-        </a>
+        </div>
       </article>
     </div>
 
