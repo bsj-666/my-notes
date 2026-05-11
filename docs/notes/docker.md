@@ -3,8 +3,6 @@ title: Docker
 date: 2026-05-06
 tags:
   - Docker
-  - 容器
-  - 环境配置
 summary: 记录 Docker Desktop 和容器、镜像迁移场景下的图示与操作备忘。
 ---
 
