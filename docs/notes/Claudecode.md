@@ -37,3 +37,4 @@ summary: 记录 Claude Code 接入 DeepSeek 以节省 token 成本的参考资�
 
 查看聊天记录列表  /resume
 
+Esc+Esc   或   /rewind   回退对话或代码
