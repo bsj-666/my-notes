@@ -7,7 +7,7 @@
 }
 
 .VPNav {
-  background: rgba(5, 8, 14, 0.66);
+  background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(18px);
 }
 
@@ -23,7 +23,7 @@
 }
 
 .VPNavBar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(77, 113, 145, 0.12);
 }
 
 .VPNavBar .title,
@@ -70,7 +70,7 @@
 .vp-doc h1,
 .vp-doc h2,
 .vp-doc h3 {
-  color: #f8fbff;
+  color: #142033;
   letter-spacing: 0.01em;
 }
 
@@ -81,7 +81,7 @@
 .vp-doc h2 {
   margin-top: 42px;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(77, 113, 145, 0.12);
   font-size: 24px;
 }
 
@@ -92,13 +92,13 @@
 
 .vp-doc p,
 .vp-doc li {
-  color: #d5deec;
+  color: #304155;
   line-height: 1.92;
 }
 
 .vp-doc blockquote {
-  border-left: 3px solid rgba(179, 255, 109, 0.48);
-  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid rgba(138, 191, 65, 0.58);
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 0 14px 14px 0;
 }
 
@@ -111,16 +111,16 @@
 }
 
 .vp-doc code {
-  color: var(--site-accent-strong);
-  background: rgba(179, 255, 109, 0.08);
+  color: #245e9c;
+  background: rgba(58, 121, 184, 0.08);
   border-radius: 6px;
   padding: 0.18em 0.38em;
 }
 
 .vp-doc div[class*='language-'] {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(77, 113, 145, 0.14);
   border-radius: 16px;
-  background: rgba(6, 10, 18, 0.92);
+  background: #f8fbff;
   box-shadow: var(--site-shadow);
 }
 
@@ -129,20 +129,30 @@
   background: transparent;
 }
 
+.vp-doc div[class*='language-'] code,
+.vp-doc div[class*='language-'] pre,
+.vp-doc div[class*='language-'] .line {
+  color: #243447 !important;
+}
+
+.vp-doc div[class*='language-'] .lang {
+  color: #61748a;
+}
+
 .vp-copy-code-button,
 .vp-doc div[class*='language-'] .copy {
   top: 12px;
   right: 12px;
-  border: 1px solid rgba(179, 255, 109, 0.24);
+  border: 1px solid rgba(138, 191, 65, 0.24);
   border-radius: 10px;
-  background: rgba(179, 255, 109, 0.08);
+  background: rgba(138, 191, 65, 0.08);
   color: var(--site-text);
 }
 
 .vp-copy-code-button:hover,
 .vp-doc div[class*='language-'] .copy:hover {
-  border-color: rgba(179, 255, 109, 0.44);
-  background: rgba(179, 255, 109, 0.14);
+  border-color: rgba(138, 191, 65, 0.44);
+  background: rgba(138, 191, 65, 0.14);
 }
 
 .VPDocAside {
@@ -157,9 +167,9 @@
   position: sticky;
   top: 88px;
   padding: 18px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(77, 113, 145, 0.12);
   border-radius: 16px;
-  background: rgba(10, 16, 26, 0.8);
+  background: rgba(255, 255, 255, 0.84);
   box-shadow: var(--site-shadow);
   backdrop-filter: blur(14px);
 }
@@ -215,9 +225,9 @@
 
 .heading-copy-button {
   margin-left: 10px;
-  border: 1px solid rgba(179, 255, 109, 0.16);
+  border: 1px solid rgba(138, 191, 65, 0.2);
   border-radius: 8px;
-  background: rgba(179, 255, 109, 0.06);
+  background: rgba(138, 191, 65, 0.08);
   color: var(--site-text-muted);
   font: 600 12px/1 var(--vp-font-family-mono);
   cursor: pointer;
@@ -232,12 +242,12 @@
 
 .heading-copy-button:hover {
   color: var(--site-accent);
-  border-color: rgba(179, 255, 109, 0.4);
+  border-color: rgba(138, 191, 65, 0.4);
 }
 
 .VPSidebar {
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
-  background: rgba(7, 11, 18, 0.52);
+  border-right: 1px solid rgba(77, 113, 145, 0.08);
+  background: rgba(250, 252, 255, 0.72);
   backdrop-filter: blur(14px);
 }
 
@@ -255,12 +265,60 @@
 
 .VPDocFooter .prev-next .pager-link {
   border-radius: 14px;
-  border-color: rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(77, 113, 145, 0.12);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .VPDocFooter .prev-next .pager-link:hover {
-  border-color: rgba(179, 255, 109, 0.28);
+  border-color: rgba(138, 191, 65, 0.28);
+}
+
+.vp-doc .mermaid,
+.vp-doc .mermaid svg {
+  max-width: 100%;
+}
+
+.vp-doc .mermaid {
+  overflow-x: auto;
+  padding: 18px;
+  border: 1px solid rgba(77, 113, 145, 0.14);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: var(--site-shadow);
+}
+
+.vp-doc .mermaid svg {
+  background: #ffffff;
+}
+
+.vp-doc .mermaid text,
+.vp-doc .mermaid .label,
+.vp-doc .mermaid .nodeLabel,
+.vp-doc .mermaid .edgeLabel {
+  fill: #1f2937 !important;
+  color: #1f2937 !important;
+}
+
+.vp-doc .mermaid .edgeLabel rect,
+.vp-doc .mermaid .labelBkg {
+  fill: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.vp-doc .mermaid .node rect,
+.vp-doc .mermaid .node circle,
+.vp-doc .mermaid .node ellipse,
+.vp-doc .mermaid .node polygon,
+.vp-doc .mermaid .node path {
+  stroke: #8abf41 !important;
+  stroke-width: 1.5px !important;
+}
+
+.vp-doc .mermaid .flowchart-link,
+.vp-doc .mermaid .edgePath path,
+.vp-doc .mermaid .arrowheadPath,
+.vp-doc .mermaid path.path {
+  stroke: #475569 !important;
 }
 
 @media (max-width: 960px) {
