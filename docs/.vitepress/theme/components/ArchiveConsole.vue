@@ -5,8 +5,9 @@ import { data as siteData } from '../../../posts.data.mjs'
 
 const activeTag = ref('全部')
 
-const posts = computed(() => siteData.value?.posts || [])
+const posts = computed(() => siteData?.posts || [])
 const tags = computed(() => ['全部', ...new Set(posts.value.flatMap((post) => post.tags))])
+const metrics = computed(() => siteData?.metrics || { total: 0, tagCount: 0, latestDate: '待补充' })
 
 const filteredPosts = computed(() => {
   if (activeTag.value === '全部') {
@@ -15,16 +16,34 @@ const filteredPosts = computed(() => {
 
   return posts.value.filter((post) => post.tags.includes(activeTag.value))
 })
+
+const archiveMetrics = computed(() => [
+  { label: '笔记总数', value: String(metrics.value.total).padStart(2, '0') },
+  { label: '主题标签', value: String(metrics.value.tagCount).padStart(2, '0') },
+  { label: '最近更新', value: metrics.value.latestDate }
+])
 </script>
 
 <template>
   <div class="archive-console">
-    <section class="console-panel console-panel--archive-hero">
-      <div class="console-eyebrow">ARCHIVE LEDGER</div>
-      <h1 class="console-title">文章归档</h1>
-      <p class="console-description">
-        这里集中展示所有笔记条目，你可以按主题快速筛选，再进入正文深入阅读。
-      </p>
+    <section class="archive-overview">
+      <div class="console-panel console-panel--archive-hero">
+        <div class="console-eyebrow">ARCHIVE LEDGER</div>
+        <h1 class="console-title">文章归档</h1>
+        <p class="console-description">
+          这里集中展示所有笔记条目，按“编号 / 标题 / 摘要 / 标签 / 更新时间”组织，便于快速检索和继续写作。
+        </p>
+      </div>
+
+      <div class="console-panel console-panel--stats archive-console__stats">
+        <div class="console-panel-title">ARCHIVE STATUS</div>
+        <div class="console-metrics">
+          <div v-for="item in archiveMetrics" :key="item.label" class="console-metric">
+            <div class="console-metric__label">{{ item.label }}</div>
+            <div class="console-metric__value">{{ item.value }}</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="console-tags console-tags--archive">
@@ -56,11 +75,15 @@ const filteredPosts = computed(() => {
           </div>
 
           <div class="archive-card__footer">
-            <span>{{ post.dateText || '待补充日期' }}</span>
+            <span>更新于 {{ post.dateText || '待补充日期' }}</span>
             <span>OPEN LOG ↗</span>
           </div>
         </a>
       </article>
+    </div>
+
+    <div v-if="!filteredPosts.length" class="archive-empty">
+      当前筛选条件下还没有匹配条目。
     </div>
   </div>
 </template>

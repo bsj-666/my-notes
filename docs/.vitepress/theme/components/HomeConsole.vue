@@ -5,8 +5,8 @@ import { data as siteData } from '../../../posts.data.mjs'
 
 const activeTag = ref('全部')
 
-const posts = computed(() => siteData.value?.posts || [])
-const metrics = computed(() => siteData.value?.metrics || { total: 0, tagCount: 0, latestDate: '待补充' })
+const posts = computed(() => siteData?.posts || [])
+const metrics = computed(() => siteData?.metrics || { total: 0, tagCount: 0, latestDate: '待补充' })
 
 const tags = computed(() => ['全部', ...new Set(posts.value.flatMap((post) => post.tags))])
 
@@ -95,7 +95,7 @@ const heroMetrics = computed(() => [
             </div>
 
             <div class="archive-card__footer">
-              <span>{{ post.dateText || '待补充日期' }}</span>
+              <span>更新于 {{ post.dateText || '待补充日期' }}</span>
               <span>OPEN LOG ↗</span>
             </div>
           </a>
