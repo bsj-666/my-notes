@@ -7,15 +7,6 @@ const { page } = useData()
 
 const expanded = ref(new Set())
 
-function slugify(text) {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/<\/?[^>]+(>|$)/g, '')
-    .replace(/[^\w\u4e00-\u9fa5\- ]+/g, '')
-    .replace(/\s+/g, '-')
-}
-
 function buildTree(headers = []) {
   const h2s = []
   let current = null
@@ -50,7 +41,7 @@ function isOpen(link) {
 
 
 function initExpanded() {
-  expanded.value = new Set()
+  expanded.value = new Set(items.value.map((item) => item.link))
 }
 
 watch(() => route.path, initExpanded)
@@ -59,7 +50,7 @@ onMounted(initExpanded)
 
 <template>
   <aside v-if="items.length" class="custom-outline">
-    <div class="custom-outline-title">On this page</div>
+    <div class="custom-outline-title">章节导航</div>
 
     <div
       v-for="item in items"

@@ -1,3 +1,13 @@
+---
+title: WSL
+date: 2026-05-05
+tags:
+  - WSL
+  - Windows
+  - 环境配置
+summary: 汇总 WSL 的安装、迁移、代理配置与外网访问相关操作。
+---
+
 # WSL
 
 ## wsl安装
