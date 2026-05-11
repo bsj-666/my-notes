@@ -302,6 +302,24 @@
   color: #1f2937 !important;
 }
 
+.vp-doc .mermaid p,
+.vp-doc .mermaid span,
+.vp-doc .mermaid div,
+.vp-doc .mermaid foreignObject {
+  line-height: 1.35 !important;
+}
+
+.vp-doc .mermaid p {
+  margin: 0 !important;
+}
+
+.vp-doc .mermaid .label,
+.vp-doc .mermaid .nodeLabel,
+.vp-doc .mermaid .edgeLabel,
+.vp-doc .mermaid .cluster-label {
+  line-height: 1.35 !important;
+}
+
 .vp-doc .mermaid .edgeLabel rect,
 .vp-doc .mermaid .labelBkg {
   fill: #ffffff !important;
