@@ -1,29 +1,33 @@
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
-import { useData, useRoute } from 'vitepress'
+import { nextTick, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vitepress'
 
 const route = useRoute()
-const { page } = useData()
-
 const expanded = ref(new Set())
+const items = ref([])
 
-function buildTree(headers = []) {
+function buildTreeFromDom() {
+  const headings = Array.from(document.querySelectorAll('.vp-doc h2[id], .vp-doc h3[id]'))
+    .map((node) => ({
+      level: Number(node.tagName.replace('H', '')),
+      title: node.childNodes[0]?.textContent?.trim() || node.textContent.trim().replace(/\s*#\s*$/, ''),
+      link: `#${node.id}`
+    }))
+
   const h2s = []
   let current = null
 
-  for (const h of headers) {
-    if (h.level === 2) {
-      current = { ...h, children: [] }
+  for (const heading of headings) {
+    if (heading.level === 2) {
+      current = { ...heading, children: [] }
       h2s.push(current)
-    } else if (h.level === 3 && current) {
-      current.children.push({ ...h })
+    } else if (heading.level === 3 && current) {
+      current.children.push({ ...heading })
     }
   }
 
-  return h2s
+  items.value = h2s
 }
-
-const items = computed(() => buildTree(page.value.headers || []))
 
 function toggle(link) {
   const next = new Set(expanded.value)
@@ -39,13 +43,19 @@ function isOpen(link) {
   return expanded.value.has(link)
 }
 
-
 function initExpanded() {
   expanded.value = new Set(items.value.map((item) => item.link))
 }
 
-watch(() => route.path, initExpanded)
-onMounted(initExpanded)
+function refreshOutline() {
+  nextTick(() => {
+    buildTreeFromDom()
+    initExpanded()
+  })
+}
+
+watch(() => route.path, refreshOutline)
+onMounted(refreshOutline)
 </script>
 
 <template>

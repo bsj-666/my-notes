@@ -54,6 +54,10 @@
   padding-top: 18px;
 }
 
+.VPDoc.has-aside .aside {
+  display: none;
+}
+
 .VPDoc.has-aside .content-container,
 .VPDoc.has-aside .content {
   max-width: var(--site-reading-width) !important;
@@ -319,6 +323,33 @@
 .vp-doc .mermaid .arrowheadPath,
 .vp-doc .mermaid path.path {
   stroke: #475569 !important;
+}
+
+@media (min-width: 1180px) {
+  .VPDoc.has-aside .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    column-gap: 24px;
+    align-items: start;
+  }
+
+  .VPDoc.has-aside .content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .VPDoc.has-aside .aside {
+    display: block;
+    position: relative;
+    width: 260px;
+    padding-left: 0;
+  }
+
+  .VPDoc.has-aside .aside-container,
+  .VPDoc.has-aside .aside-content,
+  .VPDoc.has-aside .VPDocAside {
+    width: 100%;
+  }
 }
 
 @media (max-width: 960px) {
