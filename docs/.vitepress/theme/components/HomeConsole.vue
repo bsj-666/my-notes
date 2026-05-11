@@ -64,7 +64,6 @@ const heroMetrics = computed(() => [
           <div class="console-eyebrow">RECENT LOGS</div>
           <h2>最近更新</h2>
         </div>
-          <a class="console-inline-link" :href="withBase('/archive')">查看全部归档</a>
       </div>
 
       <div class="console-tags">

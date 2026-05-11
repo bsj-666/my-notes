@@ -122,6 +122,14 @@ a {
   line-height: 1.85;
 }
 
+.console-status-row {
+  margin-top: 22px;
+}
+
+.console-action-row {
+  margin-top: 18px;
+}
+
 .console-status-row,
 .console-action-row,
 .console-tags,
