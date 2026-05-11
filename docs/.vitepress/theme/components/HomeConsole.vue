@@ -53,11 +53,6 @@ async function sharePost(url) {
           <span class="console-chip">阅读优先</span>
           <span class="console-chip">持续归档中</span>
         </div>
-
-        <div class="console-action-row">
-          <a class="console-button" :href="withBase('/archive')">文章归档</a>
-          <a class="console-button console-button--ghost" :href="withBase('/about')">关于本站</a>
-        </div>
       </div>
 
       <div class="console-panel console-panel--stats">
