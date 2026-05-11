@@ -1,10 +1,9 @@
 ---
 title: Claude Code
-date: 2026-05-08
+date: 2026-05-11
 tags:
   - AI 工具
   - Claude Code
-  - 成本优化
 summary: 记录 Claude Code 接入 DeepSeek 以节省 token 成本的参考资料与实践入口。
 ---
 
