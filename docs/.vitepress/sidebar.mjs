@@ -3,6 +3,10 @@ export const sidebar = [
     text: '笔记',
     items: [
     {
+        "text": "Agent",
+        "link": "/notes/Agent"
+    },
+    {
         "text": "Claude code",
         "link": "/notes/Claudecode"
     },
