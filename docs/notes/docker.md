@@ -79,6 +79,15 @@ D:\Docker\data\nginx\conf\nginx.conf
 Nginx 容器使用新配置
 ```
 
+#### nginx代理多个系统
+
+**以后再加系统，就：**
+
+1. 复制一份 web2.conf 改成 web3.conf（eg：listen 8042、root dist3、后端端口改成实际值）
+2. 建 `~/nginx/html/dist3/` 放 dist3
+3. docker run 加 `-p 8402:8402`
+4. `docker exec df_nginx nginx -t && docker exec df_nginx nginx -s reload`
+
 
 
 ## 容器、镜像迁移问题
